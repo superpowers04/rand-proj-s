@@ -19,6 +19,8 @@ echo "Please give us the link below when it generates"
     else
     	printf "\nInstalled applications (/usr/local):\n"
     	ls -1 /usr/share/applications
+    	printf "\nInstalled applications (~/local/share/applications):\n"
+    	ls -1 ~/local/share/applications
     	printf "\nInstalled applications (pacman):\n"
     	pacman -Q
     fi
