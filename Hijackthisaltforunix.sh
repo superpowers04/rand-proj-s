@@ -15,7 +15,7 @@ echo "Please give us the link below when it generates"
     ps -ax
     if [[ -e /Applications ]];then
     	printf "\nInstalled applications (Darwin):\n"
-    	cat /Applications
+    	ls -1 /Applications
     else
     	printf "\nInstalled applications (/usr/local):\n"
     	ls -1 /usr/share/applications
