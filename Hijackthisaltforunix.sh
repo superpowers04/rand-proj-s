@@ -2,8 +2,9 @@
 #echo "We need you to run this as root for diagnostics, If you do not understand what this means then just enter your system password below, It will not show the password for security reasons"
 echo "Please give us the link below when it generates"
 {	
-	printf "\nUname:\n"
-	uname -a
+	
+    printf "Hijackthis alternative for Unix using bash\nUname:\n"
+    uname -a
 	
     printf "\nHost file\n"
     cat /etc/hosts
@@ -24,6 +25,10 @@ echo "Please give us the link below when it generates"
 	if [[ -f "/usr/bin/pacman" ]]; then
 		printf "\nInstalled applications (pacman):\n"
 		pacman -Q
+	fi
+	if [[ -f "/usr/bin/apt" ]]; then
+		printf "\nInstalled applications (apt):\n"
+		apt list --installed
 	fi
     fi
 
