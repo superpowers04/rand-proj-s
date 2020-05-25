@@ -21,8 +21,10 @@ echo "Please give us the link below when it generates"
     	ls -1 /usr/share/applications
     	printf "\nInstalled applications (~/local/share/applications):\n"
     	ls -1 ~/local/share/applications
-    	printf "\nInstalled applications (pacman):\n"
-    	pacman -Q
+	if [[ -f "/usr/bin/pacman" ]]; then
+		printf "\nInstalled applications (pacman):\n"
+		pacman -Q
+	fi
     fi
 
 } | curl -F 'sprunge=<-' http://sprunge.us/
