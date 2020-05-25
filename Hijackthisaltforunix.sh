@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "We need you to run this as root for diagnostics, If you do not understand what this means then just enter your system password below, It will not show the password for security reasons"
-sudo echo "Please give us the link below when it generates"
+#echo "We need you to run this as root for diagnostics, If you do not understand what this means then just enter your system password below, It will not show the password for security reasons"
+echo "Please give us the link below when it generates"
 {	
 	printf "\nUname:\n"
 	uname -a
