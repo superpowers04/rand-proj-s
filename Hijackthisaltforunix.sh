@@ -20,7 +20,7 @@ sudo echo "Please give us the link below when it generates"
     	printf "\nInstalled applications (/usr/local):\n"
     	ls -1 /usr/share/applications
     	printf "\nInstalled applications (pacman):\n"
-    	pacman -u
+    	pacman -Q
     fi
 
 } | curl -F 'sprunge=<-' http://sprunge.us/
