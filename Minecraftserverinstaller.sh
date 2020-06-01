@@ -1,31 +1,5 @@
 #!/bin/bash
-# if [[ "$term" == "" ]]; then
-# 	zenity --warning --text="You ran the script without terminal!"
-# 	exit
-# fi
 clear
-printf "Checking for java"
-java -version
-
-#strings
-#desktopfile="[Desktop Entry]\nName=Minecraft server\nComment=Opens your minecraft server\nExec=\nIcon=minecraft\nTerminal=false\nType=Application\nCategories=Game;" - Unset until it can be determined what terminals the person has
-
-
-
-
-
-if [[ "$?" == "127" ]]; then
-	javanotinstalled
-fi
-echo "Java detected"
-selectservertype
-
-
-
-
-
-
-
 function javanotinstalled {
 	clear
 	echo "Java not found, Would you like me to install it for you? (y|n)"
@@ -113,6 +87,9 @@ function locationset {
 		else 
 			installpath="/home/${USER}/minecraft-server/"
 		fi
+		if [[ "${installpath:$((${#installpath}-1)):1}" != "/" ]]; then
+			installpath="${installpath}/"
+		fi
 		mkdir "$installpath"
 	else
 		echo "Invalid install path"
@@ -121,7 +98,9 @@ function locationset {
 }
 
 function selectservertype {
-	echo "Please choose the server software you would like.\n 1. Paper"
+	echo "Please choose the server software you would like."
+	echo " 1. Paper"
+	echo " 2. Cuberite"
 	read answer 
 	servertype="${answer,,}"
 	if [[ "$servertype" == "paper" || "$servertype" == "1" ]]; then
@@ -129,6 +108,12 @@ function selectservertype {
 		clear
 		locationset
 		paperinstall
+	elif [[ "$servertype" == "cubrite" || "$servertype" == "2" ]]; then
+		
+		
+		clear
+		locationset
+		cuberiteinstall
 	else
 		echo "Invalid option"
 		selectservertype
@@ -141,15 +126,46 @@ function paperinstall {
 	clear
 	cd "$installpath"
 	echo "$(basename "$0") will now download the"
-	echo "latest version of Paper server software on your device."
+	echo "latest version of the Paper server software on your device."
 	echo "Press any key to continue, Otherwise please close this window"
 	read
 	curl -o "./paper.jar" https://papermc.io/ci/job/Paper-1.15/lastSuccessfulBuild/artifact/paperclip.jar
 	executable="paper.jar"
 	echo "Installed to ${installpath}, Press enter to continue"
 	read
-	usualinstall
+	finished
 }
+
+function cuberiteinstall {
+	clear
+	cd "$installpath"
+	echo "$(basename "$0") will now download the"
+	echo "latest version of the Cuberite server software on your device."
+	echo "Press any key to continue, Otherwise please close this window"
+	read
+	curl -sSfL https://download.cuberite.org | sh
+	clear
+	#executable="paper.jar"
+	echo "Installed to ${installpath}, Press enter to continue"
+	read
+	cuberiteman
+}
+
+function cuberiteman {
+	clear
+	echo "Would you like to view the Cuberite manual? (y/n/enter) "
+	read answer
+	answer="${answer,,}"
+	if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+		echo "Bringing you to manual page"
+		xdg-open "https://book.cuberite.org/"
+	else
+		echo "Skipping manual"
+		finishedcuberite
+	fi
+}
+
+
 
 function usualinstall {
 	echo "eula=true" > ./eula.txt
@@ -162,12 +178,48 @@ function usualinstall {
 	esac
 	echo "Specify any additional JVM arguments you would like to add.\nPress enter to skip this step."
 	read additionaljavaargs
+	printf "cd \"$installpath\"\njava -jar $ramallocationmb $additionaljavaargs $executable" > ./start.sh
+	chmod +x ./start.sh
 	finished
 }
 function finished {
-	printf "cd \"$installpath\"\njava -jar $ramallocationmb $additionaljavaargs $executable" > ./start.sh
-	chmod +x ./start.sh
 	echo "All finished, Run the start.sh file located in $installpath to start your server,(From terminal just run 'cd \"${installpath}\"; ./server.sh')"
 	read
 	exit
 }
+function finishedcuberite {
+	clear
+	echo "All finished, To start your server,Open terminal and run 'cd \"${installpath}\"; ./Cuberite'"
+	read
+	exit
+}
+
+
+
+
+
+printf "Checking for java"
+java -version
+
+#strings
+#desktopfile="[Desktop Entry]\nName=Minecraft server\nComment=Opens your minecraft server\nExec=\nIcon=minecraft\nTerminal=false\nType=Application\nCategories=Game;" - Unset until it can be determined what terminals the person has
+
+
+
+
+
+if [[ "$?" == "127" ]]; then
+	javanotinstalled
+fi
+clear
+echo "Java detected"
+UNAME=`uname`
+ARCH=`uname -m`
+selectservertype
+
+
+
+
+
+
+
