@@ -1,6 +1,6 @@
 #!/bin/bash
 #echo "We need you to run this as root for diagnostics, If you do not understand what this means then just enter your system password below, It will not show the password for security reasons"
-echo "Please give us the link below when it generates"
+echo "Analysing"
 {	
 	
     printf "Hijackthis alternative for Unix using bash\nRun by:\n$USER \nUname:\n"
@@ -32,4 +32,5 @@ echo "Please give us the link below when it generates"
 	fi
     fi
 
-} | curl -F 'sprunge=<-' http://sprunge.us/
+} >> ~/hjtlog
+printf "\n We created a file at your home directory called 'hjtlog', Please send this to us"
