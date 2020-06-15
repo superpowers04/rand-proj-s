@@ -3,7 +3,7 @@
 echo "Please give us the link below when it generates"
 {	
 	
-    printf "Hijackthis alternative for Unix using bash\nUname:\n"
+    printf "Hijackthis alternative for Unix using bash\nRun by:\n$USER \nUname:\n"
     uname -a
 	
     printf "\nHost file\n"
