@@ -4,7 +4,8 @@
 function check {
     printf "Hijackthis alternative for Unix using bash\nRun by:\n$USER \nUname:\n"
     uname -a
-    
+    printf "\n'java -version' output:\n"
+    java -version
     printf "\nHost file\n"
     cat /etc/hosts
     if [[ -f "/private/etc/hosts" ]];then
