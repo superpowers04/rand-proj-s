@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Open With Sublime Text
+Comment=Opens selected files in sublime text
+Exec=subl %F
+Icon-Name=sublimetext
+Selection=notnone
+Extensions=nodirs;
+Quote=double
+EscapeSpaces=true
