@@ -50,5 +50,5 @@ elif [[ "$@" == "-f" ]]; then
 else
     printf "\nAnalysing..\033[0;1m"
     check | curl -F 'sprunge=<-' http://sprunge.us/
-    printf "\n\033[0;1mPlease give us the link above"
+    printf "\n\033[0;31mPlease give us the link above"
 fi
