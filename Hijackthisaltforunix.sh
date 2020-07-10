@@ -4,8 +4,13 @@
 function check {
     printf "Hijackthis alternative for Unix using bash\nRun by:\n$USER \nUname:\n"
     uname -a
-    printf "\nJava installations in /lib/jvm:\n"
-    ls /lib/jvm
+    if [[ -e /lib/jvm ]];then
+        printf "\nJava installations in /lib/jvm:\n"
+        ls /lib/jvm
+    elif [[ -e /lib64/jvm ]];then
+        printf "\nJava installations in /lib64/jvm:\n"
+        ls /lib64/jvm
+    fi
     printf "\nHost file\n"
     cat /etc/hosts
     if [[ -f "/private/etc/hosts" ]];then
