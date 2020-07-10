@@ -6,10 +6,13 @@ function check {
     uname -a
     if [[ -e /lib/jvm ]];then
         printf "\nJava installations in /lib/jvm:\n"
-        ls /lib/jvm
+        ls /lib/jvm    
     elif [[ -e /lib64/jvm ]];then
         printf "\nJava installations in /lib64/jvm:\n"
         ls /lib64/jvm
+    elif [[ -e /Library/Java/JavaVirtualMachines/ ]];then
+        printf "\nJava installations in /Library/Java/JavaVirtualMachines/:\n"
+        ls /Library/Java/JavaVirtualMachines/
     fi
     printf "\nHost file\n"
     cat /etc/hosts
