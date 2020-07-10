@@ -4,8 +4,8 @@
 function check {
     printf "Hijackthis alternative for Unix using bash\nRun by:\n$USER \nUname:\n"
     uname -a
-    printf "\n'java -version' output:\n"
-    java -version
+    printf "\nJava installations in /lib/jvm:\n"
+    ls /lib/jvm
     printf "\nHost file\n"
     cat /etc/hosts
     if [[ -f "/private/etc/hosts" ]];then
@@ -38,9 +38,9 @@ if [[ "$@" == "-h" ]]; then
 elif [[ "$@" == "-f" ]]; then
     echo "Analysing.."
     check > ~/hjtlog
-    printf "\nWe created a file at your home directory called 'hjtlog', Please send this to us\n"
+    printf "\n\033[0;1mWe created a file at your home directory called 'hjtlog', Please send this to us\n"
 else
-    echo "Analysing.."
+    echo "Analysing..\033[0;1m"
     check | curl -F 'sprunge=<-' http://sprunge.us/
-    echo "Please give us the link above"
+    echo "\033[0;1mPlease give us the link above"
 fi
