@@ -48,7 +48,7 @@ elif [[ "$@" == "-f" ]]; then
     check > ~/hjtlog
     printf "\n\033[0;1mWe created a file at your home directory called 'hjtlog', Please send this to us\n"
 else
-    printf "\nAnalysing..\033[0;1m"
+    printf "\nAnalysing.."
     check | curl -F 'sprunge=<-' http://sprunge.us/
-    printf "\n\033[0;31mPlease give us the link above"
+    printf "\nPlease give us the link above"
 fi
