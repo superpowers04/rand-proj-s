@@ -44,11 +44,11 @@ function check {
 if [[ "$@" == "-h" ]]; then
     printf "Usage:\n -h : Print this help message\n -f : Produce output file instead of uploading"
 elif [[ "$@" == "-f" ]]; then
-    echo "Analysing.."
+    printf "\nAnalysing..\033[0;1m"
     check > ~/hjtlog
     printf "\n\033[0;1mWe created a file at your home directory called 'hjtlog', Please send this to us\n"
 else
-    echo "Analysing..\033[0;1m"
+    printf "\nAnalysing..\033[0;1m"
     check | curl -F 'sprunge=<-' http://sprunge.us/
-    echo "\033[0;1mPlease give us the link above"
+    printf "\n\033[0;1mPlease give us the link above"
 fi
