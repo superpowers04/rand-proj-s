@@ -5,5 +5,4 @@ Exec=subl %F
 Icon-Name=sublimetext
 Selection=notnone
 Extensions=nodirs;
-Quote=double
 EscapeSpaces=true
