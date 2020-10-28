@@ -3,7 +3,9 @@
 
 function check {
     printf "Hijackthis alternative for Unix using bash\nRun by:\n$USER \nUname:\n"
-    uname -a
+    uname -a 
+    printf "/proc/version:\n"
+    cat /proc/version
     printf "Java -version output:\n"
     java -version 2>&1
     if [[ -e /lib/jvm ]];then
@@ -16,7 +18,7 @@ function check {
         printf "\nJava installations in /Library/Java/JavaVirtualMachines/:\n"
         ls /Library/Java/JavaVirtualMachines/
     fi
-    printf "\nHost file\n"
+    printf "\nHost file:\n"
     cat /etc/hosts
     if [[ -f "/private/etc/hosts" ]];then
         printf "\nSecond host file\n"
