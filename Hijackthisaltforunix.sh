@@ -1,8 +1,8 @@
 #!/bin/bash
 function check {
-    printf "Hijackthis alternative for Unix using bash\nRun by:\n$USER \nUname:\n"
+    printf "Hijackthis alternative for Unix using bash\nRun by: $USER \nUname:"
     uname -a 
-    printf "/proc/version:\n"
+    printf "\n/proc/version:\n"
     cat /proc/version
     printf "Java -version output:\n"
     java -version 2>&1
