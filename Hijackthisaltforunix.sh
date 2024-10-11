@@ -49,14 +49,14 @@ case "$@" in
 		printf "\nDone\n"
 	;;
 	* )
-		printf "\nThis script will generate a list of Java installs, hosts file, running programs, and installed applications, upload it to https://pastebook.dev and then give you a link.\n This upload will expire in 30 days and will be unlisted."
+		printf "\nThis script will generate a list of Java installs, hosts file, running programs, and installed applications, upload it to http://sprunge.us/ and then give you a link.\n This upload will expire in 30 days and will be unlisted."
 		printf "\n If you'd like to save to $HOME/hjtlog instead, rerun this script with the -p flag\nPress enter to continue or type n and press enter to cancel\n"
 		read answer
 		if [[ "$answer" == 'n' || "$answer" == 'no' ]];then 
 			printf 'Cancelled\n'
 		else
 			printf "\nAnalysing.."
-			check | curl -H "expires: 2592000000" -H "title: Unix Hijackthis Log" -H "unlisted: true" -X POST --upload-file "-" https://pastebook.dev/api/upload
+			check | curl -F 'sprunge=<-' http://sprunge.us/
 			printf "\nPlease give us the link above"
 		fi
 	;;
